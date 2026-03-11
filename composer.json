@@ -1,0 +1,61 @@
+{
+    "name": "dknx01/data-fixtures",
+    "description": "A PHP package for data fixtures with plain PDO connection.",
+    "license": "MIT",
+    "type": "library",
+    "keywords": [
+        "Persistence",
+        "Fixture",
+        "Tests"
+    ],
+    "authors": [
+        {
+            "name": "Dknx01",
+            "email": "ew1701-code@yahoo.de"
+        }
+    ],
+    "require": {
+        "php": ">=8.5",
+        "ext-pdo": "*"
+    },
+    "require-dev": {
+        "calebdw/fakerstan": "^1.2",
+        "ergebnis/composer-normalize": "^2.50",
+        "fakerphp/faker": "^1.24",
+        "friendsofphp/php-cs-fixer": "^3.94",
+        "jangregor/phpstan-prophecy": "^2.3",
+        "phpspec/prophecy-phpunit": "^2.5",
+        "phpstan/extension-installer": "^1.4",
+        "phpstan/phpstan": "^2.1",
+        "phpstan/phpstan-beberlei-assert": "^2.0",
+        "phpstan/phpstan-phpunit": "^2.0",
+        "phpunit/phpunit": "^13.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Dknx01\\DataFixtures\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Dknx01\\DataFixtures\\Tests\\": "tests/"
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "ergebnis/composer-normalize": true,
+            "phpstan/extension-installer": true
+        }
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "@auto-scripts"
+        ],
+        "post-update-cmd": [
+            "@auto-scripts"
+        ],
+        "auto-scripts": {
+            "@composer normalize": ""
+        }
+    }
+}
