@@ -1,0 +1,163 @@
+parameters:
+	ignoreErrors:
+		-
+			message: '#^Binary operation "\." between ''Unsupported driver…'' and mixed results in an error\.$#'
+			identifier: binaryOp.invalid
+			count: 1
+			path: src/Exception/UnsupportedPDODriverException.php
+
+		-
+			message: '#^Parameter \#1 \$pdo of method Dknx01\\DataFixtures\\Fixture\\FixtureInterface\:\:load\(\) expects PDO, PDO\|null given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Fixture/FixtureHandler.php
+
+		-
+			message: '#^Method Dknx01\\DataFixtures\\Purger\\Driver\\AbstractDriver\:\:getDriver\(\) should return string but returns mixed\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Purger/Driver/AbstractDriver.php
+
+		-
+			message: '#^Parameter \$dsn of class PDO constructor expects string, string\|null given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Purger/Driver/MySQL.php
+
+		-
+			message: '#^Property Dknx01\\DataFixtures\\Purger\\Driver\\AbstractDriver\:\:\$pdo \(PDO\) does not accept PDO\|null\.$#'
+			identifier: assign.propertyType
+			count: 1
+			path: src/Purger/Driver/MySQL.php
+
+		-
+			message: '#^Parameter \$dsn of class PDO constructor expects string, string\|null given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Purger/Driver/PostgreSql.php
+
+		-
+			message: '#^Property Dknx01\\DataFixtures\\Purger\\Driver\\AbstractDriver\:\:\$pdo \(PDO\) does not accept PDO\|null\.$#'
+			identifier: assign.propertyType
+			count: 1
+			path: src/Purger/Driver/PostgreSql.php
+
+		-
+			message: '#^Parameter \$dsn of class PDO constructor expects string, string\|null given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Purger/Driver/Sqlite.php
+
+		-
+			message: '#^Property Dknx01\\DataFixtures\\Purger\\Driver\\AbstractDriver\:\:\$pdo \(PDO\) does not accept PDO\|null\.$#'
+			identifier: assign.propertyType
+			count: 1
+			path: src/Purger/Driver/Sqlite.php
+
+		-
+			message: '#^Cannot access offset 0 on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 2
+			path: tests/Application/Purger/DatabasePurgerTest.php
+
+		-
+			message: '#^Argument of an invalid type Dknx01\\DataFixtures\\Fixture\\FixtureCollection\<\(int\|string\), Dknx01\\DataFixtures\\Fixture\\FixtureInterface\>\|null supplied for foreach, only iterables are supported\.$#'
+			identifier: foreach.nonIterable
+			count: 1
+			path: tests/Helper/FixtureTestCaseDummy.php
+
+		-
+			message: '#^Cannot call method add\(\) on Dknx01\\DataFixtures\\Fixture\\FixtureCollection\<\(int\|string\), Dknx01\\DataFixtures\\Fixture\\FixtureInterface\>\|null\.$#'
+			identifier: method.nonObject
+			count: 1
+			path: tests/Helper/FixtureTestCaseDummy.php
+
+		-
+			message: '#^Cannot call method addAt\(\) on Dknx01\\DataFixtures\\Fixture\\FixtureCollection\<\(int\|string\), Dknx01\\DataFixtures\\Fixture\\FixtureInterface\>\|null\.$#'
+			identifier: method.nonObject
+			count: 1
+			path: tests/Helper/FixtureTestCaseDummy.php
+
+		-
+			message: '#^Cannot call method has\(\) on Dknx01\\DataFixtures\\Fixture\\FixtureCollection\<\(int\|string\), Dknx01\\DataFixtures\\Fixture\\FixtureInterface\>\|null\.$#'
+			identifier: method.nonObject
+			count: 1
+			path: tests/Helper/FixtureTestCaseDummy.php
+
+		-
+			message: '#^Method Dknx01\\DataFixtures\\Tests\\Helper\\FixtureTestCaseDummy\:\:getFixture\(\) should return Dknx01\\DataFixtures\\Fixture\\FixtureInterface but returns object\.$#'
+			identifier: return.type
+			count: 1
+			path: tests/Helper/FixtureTestCaseDummy.php
+
+		-
+			message: '#^Method Dknx01\\DataFixtures\\Tests\\Helper\\FixtureTestCaseDummy\:\:getFixtures\(\) return type with generic class Dknx01\\DataFixtures\\Fixture\\FixtureCollection does not specify its types\: TKey, TValue$#'
+			identifier: missingType.generics
+			count: 1
+			path: tests/Helper/FixtureTestCaseDummy.php
+
+		-
+			message: '#^Method Dknx01\\DataFixtures\\Tests\\Helper\\FixtureTestCaseDummy\:\:getFixtures\(\) should return Dknx01\\DataFixtures\\Fixture\\FixtureCollection but returns Dknx01\\DataFixtures\\Fixture\\FixtureCollection\<\(int\|string\), Dknx01\\DataFixtures\\Fixture\\FixtureInterface\>\|null\.$#'
+			identifier: return.type
+			count: 1
+			path: tests/Helper/FixtureTestCaseDummy.php
+
+		-
+			message: '#^Offset ''class'' might not exist on array\{function\: string, line\?\: int, file\?\: string, class\?\: class\-string, type\?\: ''\-\>''\|''\:\:'', args\?\: list\<mixed\>, object\?\: object\}\.$#'
+			identifier: offsetAccess.notFound
+			count: 2
+			path: tests/Helper/FixtureTestCaseDummy.php
+
+		-
+			message: '#^Method Dknx01\\DataFixtures\\Tests\\Helper\\TestDriver\:\:getSchemaName\(\) should return string but returns string\|null\.$#'
+			identifier: return.type
+			count: 1
+			path: tests/Helper/TestDriver.php
+
+		-
+			message: '#^Property Dknx01\\DataFixtures\\Purger\\Driver\\AbstractDriver\:\:\$pdo \(PDO\) does not accept PDO\|null\.$#'
+			identifier: assign.propertyType
+			count: 1
+			path: tests/Helper/TestDriver.php
+
+		-
+			message: '#^Argument of an invalid type Dknx01\\DataFixtures\\Fixture\\FixtureCollection\<\(int\|string\), Dknx01\\DataFixtures\\Fixture\\FixtureInterface\>\|null supplied for foreach, only iterables are supported\.$#'
+			identifier: foreach.nonIterable
+			count: 1
+			path: tests/Unit/Fixture/FixtureHandlerTest.php
+
+		-
+			message: '#^Cannot call method add\(\) on Dknx01\\DataFixtures\\Fixture\\FixtureCollection\<\(int\|string\), Dknx01\\DataFixtures\\Fixture\\FixtureInterface\>\|null\.$#'
+			identifier: method.nonObject
+			count: 1
+			path: tests/Unit/Fixture/FixtureHandlerTest.php
+
+		-
+			message: '#^Cannot call method addAt\(\) on Dknx01\\DataFixtures\\Fixture\\FixtureCollection\<\(int\|string\), Dknx01\\DataFixtures\\Fixture\\FixtureInterface\>\|null\.$#'
+			identifier: method.nonObject
+			count: 1
+			path: tests/Unit/Fixture/FixtureHandlerTest.php
+
+		-
+			message: '#^Cannot call method has\(\) on Dknx01\\DataFixtures\\Fixture\\FixtureCollection\<\(int\|string\), Dknx01\\DataFixtures\\Fixture\\FixtureInterface\>\|null\.$#'
+			identifier: method.nonObject
+			count: 1
+			path: tests/Unit/Fixture/FixtureHandlerTest.php
+
+		-
+			message: '#^Method Dknx01\\DataFixtures\\Tests\\Unit\\Fixture\\FixtureHandlerTest\:\:getFixture\(\) should return Dknx01\\DataFixtures\\Fixture\\FixtureInterface but returns object\.$#'
+			identifier: return.type
+			count: 1
+			path: tests/Unit/Fixture/FixtureHandlerTest.php
+
+		-
+			message: '#^Offset ''class'' might not exist on array\{function\: string, line\?\: int, file\?\: string, class\?\: class\-string, type\?\: ''\-\>''\|''\:\:'', args\?\: list\<mixed\>, object\?\: object\}\.$#'
+			identifier: offsetAccess.notFound
+			count: 2
+			path: tests/Unit/Fixture/FixtureHandlerTest.php
+
+		-
+			message: '#^Parameter \#1 \$fixtures of method Dknx01\\DataFixtures\\Fixture\\FixtureHandler\:\:handle\(\) expects Dknx01\\DataFixtures\\Fixture\\FixtureCollection\<\(int\|string\), Dknx01\\DataFixtures\\Fixture\\FixtureInterface\>, Dknx01\\DataFixtures\\Fixture\\FixtureCollection\<mixed, mixed\> given\.$#'
+			identifier: argument.type
+			count: 1
+			path: tests/Unit/Fixture/FixtureHandlerTest.php
