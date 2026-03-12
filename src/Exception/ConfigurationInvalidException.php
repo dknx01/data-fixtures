@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the dknx01/data-fixtures package.
  * (c) dknx01/data-fixtures

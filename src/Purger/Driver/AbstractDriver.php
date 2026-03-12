@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the dknx01/data-fixtures package.
  * (c) dknx01/data-fixtures
@@ -40,7 +42,7 @@ abstract class AbstractDriver implements PdoDriver
         if (preg_match('/dbname=([^;]+)/', (string) $configuration->dsn, $m)) {
             $this->schemaName = $m[1];
         } else {
-            throw new InvalidArgumentException('Database name could not be extracted from DSN.');
+            throw new InvalidArgumentException('Database name could not be extracted from DSN or from configuration.');
         }
     }
 }

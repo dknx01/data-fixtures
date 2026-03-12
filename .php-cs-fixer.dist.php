@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the dknx01/data-fixtures package.
  * (c) dknx01/data-fixtures
@@ -26,6 +28,7 @@ return (new PhpCsFixer\Config())
         'native_function_invocation' => ['include' => ['@compiler_optimized', 'sprintf'], 'scope' => 'namespaced', 'strict' => true],
         'trailing_comma_in_multiline' => ['elements' => ['arrays', 'match', 'parameters']],
         'global_namespace_import' => ['import_classes' => true, 'import_constants' => true, 'import_functions' => true],
+        'declare_strict_types' => true,
     ])
     ->setRiskyAllowed(true)
     ->setFinder(
