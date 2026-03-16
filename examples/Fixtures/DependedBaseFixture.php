@@ -7,14 +7,17 @@ declare(strict_types=1);
  * (c) dknx01/data-fixtures
  */
 
-namespace Dknx01\DataFixtures\Tests\Helper;
+namespace examples\Fixtures;
 
 use Dknx01\DataFixtures\Contract\FixtureInterface;
 use PDO;
 
-class SimpleFixture implements FixtureInterface
+use const PHP_EOL;
+
+class DependedBaseFixture implements FixtureInterface
 {
     public function load(PDO $pdo): void
     {
+        echo 'I should be the base of all depending fixtures.'.PHP_EOL.'File: '.__FILE__.PHP_EOL;
     }
 }

@@ -9,8 +9,8 @@ declare(strict_types=1);
 
 namespace Dknx01\DataFixtures\Tests\Unit\Fixture;
 
+use Dknx01\DataFixtures\Contract\FixtureInterface;
 use Dknx01\DataFixtures\Fixture\FixtureCollection;
-use Dknx01\DataFixtures\Fixture\FixtureInterface;
 use OutOfBoundsException;
 use PDO;
 use PHPUnit\Framework\Attributes\TestWith;
@@ -38,11 +38,11 @@ class FixtureCollectionTest extends TestCase
     }
 
     #[TestWith(['position' => -1])]
-    #[TestWith(['position' => 3])]
+    #[TestWith(['position' => -10])]
     public function testAddAtWithInvalidPosition(int $position): void
     {
         $this->expectException(OutOfBoundsException::class);
-        $this->expectExceptionMessage("Position {$position} is out of bounds (allowed 0‑1).");
+        $this->expectExceptionMessage("Position {$position} is out of bounds (allowed >= 0).");
 
         $collection = new FixtureCollection();
         $collection->add($this->getFixture1());
@@ -60,6 +60,25 @@ class FixtureCollectionTest extends TestCase
         $collection->add($this->getFixture1());
         $collection->add($this->getFixture2());
         $collection->removeAt($position);
+    }
+
+    #[TestWith(['position' => 1])]
+    #[TestWith(['position' => 5])]
+    public function testAddAt(int $position): void
+    {
+        $collection = new FixtureCollection();
+        $collection->addAt($position, $this->getFixture1());
+
+        $this->assertArrayHasKey($position, $collection->toArray());
+    }
+
+    public function testAddWithArrayChunks(): void
+    {
+        $collection = new FixtureCollection();
+        $collection->addAt(2, $this->getFixture1());
+        $collection->add($this->getFixture1());
+
+        $this->assertArraysAreEqual([0 => $this->getFixture1(), 2 => $this->getFixture1()], $collection->toArray());
     }
 
     private function getFixture1(): FixtureInterface

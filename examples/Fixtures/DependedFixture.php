@@ -7,17 +7,19 @@ declare(strict_types=1);
  * (c) dknx01/data-fixtures
  */
 
-namespace Dknx01\DataFixtures\Tests\Helper;
+namespace examples\Fixtures;
 
 use Dknx01\DataFixtures\Attributes\DependFixture;
 use Dknx01\DataFixtures\Contract\FixtureInterface;
 use PDO;
 
-#[\Dknx01\DataFixtures\Attributes\OrderedFixture(0)]
-#[DependFixture(DependingOnFixture::class)]
-class OrderedFixture implements FixtureInterface
+use const PHP_EOL;
+
+#[DependFixture(DependedBaseFixture::class)]
+class DependedFixture implements FixtureInterface
 {
     public function load(PDO $pdo): void
     {
+        echo 'Someone depends on me.'.PHP_EOL.'File: '.__FILE__.PHP_EOL;
     }
 }

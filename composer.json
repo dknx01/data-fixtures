@@ -29,7 +29,9 @@
         "phpstan/phpstan": "^2.1",
         "phpstan/phpstan-beberlei-assert": "^2.0",
         "phpstan/phpstan-phpunit": "^2.0",
-        "phpunit/phpunit": "^13.0"
+        "phpunit/phpunit": "^13.0",
+        "yamadashy/phpstan-friendly-formatter": "^1.4",
+        "league/climate": "^3.10"
     },
     "autoload": {
         "psr-4": {
@@ -38,7 +40,8 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Dknx01\\DataFixtures\\Tests\\": "tests/"
+            "Dknx01\\DataFixtures\\Tests\\": "tests/",
+            "examples\\": "examples/"
         }
     },
     "config": {

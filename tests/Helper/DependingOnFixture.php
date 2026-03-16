@@ -9,7 +9,7 @@ declare(strict_types=1);
 
 namespace Dknx01\DataFixtures\Tests\Helper;
 
-use Dknx01\DataFixtures\Fixture\FixtureInterface;
+use Dknx01\DataFixtures\Contract\FixtureInterface;
 use PDO;
 
 class DependingOnFixture implements FixtureInterface

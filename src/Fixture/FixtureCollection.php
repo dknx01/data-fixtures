@@ -11,11 +11,13 @@ namespace Dknx01\DataFixtures\Fixture;
 
 use ArrayIterator;
 use Countable;
+use Dknx01\DataFixtures\Contract\FixtureInterface;
 use IteratorAggregate;
 use OutOfBoundsException;
 use ReturnTypeWillChange;
 use Traversable;
 
+use function array_key_exists;
 use function count;
 
 /**
@@ -31,7 +33,18 @@ class FixtureCollection implements IteratorAggregate, Countable
 
     public function add(FixtureInterface $value): void
     {
+        if (!empty($this->fixtures)) {
+            for ($i = 0; $i < max(array_keys($this->fixtures)); ++$i) {
+                if (!array_key_exists($i, $this->fixtures)) {
+                    $this->fixtures[$i] = $value;
+                    ksort($this->fixtures);
+
+                    return;
+                }
+            }
+        }
         $this->fixtures[] = $value;
+        ksort($this->fixtures);
     }
 
     /**
@@ -48,13 +61,15 @@ class FixtureCollection implements IteratorAggregate, Countable
      */
     public function addAt(int $position, FixtureInterface $value): void
     {
-        $size = count($this->fixtures);
-
-        if ($position < 0 || $position > $size) {
-            throw new OutOfBoundsException("Position {$position} is out of bounds (allowed 0‑{$size}).");
+        if ($position < 0) {
+            throw new OutOfBoundsException("Position {$position} is out of bounds (allowed >= 0).");
         }
 
-        array_splice($this->fixtures, $position, 0, [$value]);
+        if (!array_key_exists($position, $this->fixtures)) {
+            $this->fixtures[$position] = $value;
+        } else {
+            array_splice($this->fixtures, $position, 0, [$value]);
+        }
     }
 
     /**

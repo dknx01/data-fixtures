@@ -13,6 +13,7 @@ use Dknx01\DataFixtures\Attributes\DataFixture;
 use Dknx01\DataFixtures\Attributes\DependFixture;
 use Dknx01\DataFixtures\Attributes\OrderedFixture;
 use Dknx01\DataFixtures\Contract\FakerAware;
+use Dknx01\DataFixtures\Contract\FixtureInterface;
 use Dknx01\DataFixtures\Exception\FixtureAlreadyLoadedException;
 use Dknx01\DataFixtures\Faker\FakerTrait;
 use Dknx01\DataFixtures\Purger\Configuration;
@@ -51,6 +52,7 @@ trait DataFixtureTrait
 
         $stack = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS, 2);
 
+        // process class level
         $reflection = new ReflectionClass($stack[$stackPosition]['class']);
         foreach ($reflection->getAttributes(DataFixture::class) as $attribute) {
             /** @var DataFixture $attrInstance */
@@ -58,25 +60,32 @@ trait DataFixtureTrait
             $this->addFixture($attrInstance);
         }
 
+        // process method level
         $reflection = new ReflectionMethod($stack[$stackPosition]['class'], $stack[$stackPosition]['function']);
         foreach ($reflection->getAttributes(DataFixture::class) as $attribute) {
             /** @var DataFixture $attrInstance */
             $attrInstance = $attribute->newInstance();
             $this->addFixture($attrInstance);
         }
-        $this->processDependentFixtures();
     }
 
     /**
      * @throws FixtureAlreadyLoadedException
      */
-    private function addFixture(DataFixture $dataFixture): void
+    private function addFixture(DataFixture|DependFixture $dataFixture): void
     {
         if ($this->fixtureAlreadyLoaded($dataFixture)) {
             throw new FixtureAlreadyLoadedException($dataFixture);
         }
         $fixture = $this->getFixture($dataFixture);
         $reflClass = new ReflectionClass($fixture);
+
+        foreach ($reflClass->getAttributes(DependFixture::class) as $dependingAttribute) {
+            /** @var DependFixture $dependingClass */
+            $dependingClass = $dependingAttribute->newInstance();
+            $this->addFixture($dependingClass);
+        }
+
         $reflAttributes = $reflClass->getAttributes(OrderedFixture::class);
         if (0 === count($reflAttributes)) {
             $this->fixtures->add($fixture);
@@ -92,7 +101,7 @@ trait DataFixtureTrait
         return $this->fixtures->has($attrInstance->fixtureClass);
     }
 
-    private function getFixture(DataFixture $attrInstance): FixtureInterface
+    private function getFixture(DataFixture|DependFixture $attrInstance): FixtureInterface
     {
         $fixture = $attrInstance->fixtureClass instanceof FixtureInterface
             ? $attrInstance->fixtureClass
@@ -102,25 +111,5 @@ trait DataFixtureTrait
         }
 
         return $fixture;
-    }
-
-    /**
-     * @throws ReflectionException
-     */
-    private function processDependentFixtures(): void
-    {
-        foreach ($this->fixtures as $fixture) {
-            $reflection = new ReflectionClass($fixture);
-            foreach ($reflection->getAttributes(DependFixture::class) as $attribute) {
-                /** @var DependFixture $attrInstance */
-                $attrInstance = $attribute->newInstance();
-                $dependFixture = new DataFixture($attrInstance->fixtureClass);
-                try {
-                    $this->addFixture($dependFixture);
-                } catch (FixtureAlreadyLoadedException $e) {
-                    // Do nothing as the dependent fixture was already loaded, which may occur.
-                }
-            }
-        }
     }
 }

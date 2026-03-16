@@ -58,7 +58,7 @@ Mostly it will be "1" which means directly from the method/class the "loadFixtur
 If you have more inherited classes, you can change the number.
 
 ### Writing a fixture
-Each fixture must implement the `Doctrine\Common\DataFixtures\FixtureInterface;`.
+Each fixture must implement the `Dknx01\DataFixtures\Contract\FixtureInterface`.
 Example:
 ``` php
 <?php
@@ -66,9 +66,8 @@ Example:
 namespace App\Tests\Fixtures;
 
 use App\Entity\User;
-use Dknx01\DataFixturesPhpUnit\Contract\FakerAware;
-use Doctrine\Common\DataFixtures\FixtureInterface;
-use Doctrine\Persistence\ObjectManager;
+use Dknx01\DataFixtures\Contract\FakerAware;
+use Dknx01\DataFixtures\Contract\FixtureInterface;
 use Faker\Generator;
 
 readonly class UserFixture implements FixtureInterface, FakerAware
@@ -120,7 +119,7 @@ public function testFoo(): void
 }
 ```
 #### Dependent Fixtures
-Fixtures can depend on other fixtures. You can use the way Doctrine data fixtures is suggesting, or you can use an attribute.
+Fixtures can depend on other fixtures.
 ```php
 #[DependFixture(BarFixture::class)]
 class FooFixture implements FixtureInterface, FakerAware
@@ -129,19 +128,40 @@ class FooFixture implements FixtureInterface, FakerAware
 }
 ```
 
+#### Ordered Fixtures
+Fixtures can have an order at which position they should load in the fixture loading process.
+
+**If a position is added multiple times, the early will move one step ahead of the latest ones.**
+
+Example:
+```php
+// FIXTURE 1
+#[\Dknx01\DataFixtures\Attributes\OrderedFixture(1)]
+// FIXTURE 2
+#[\Dknx01\DataFixtures\Attributes\OrderedFixture(1)]
+// Result:
+[
+    0 => 'FIXTURE 1',
+    1 => 'FIXTURE 2'
+]
+```
+**This attribute will overwrite the DependFixture attribute!**
+```php
+#[\Dknx01\DataFixtures\Attributes\OrderedFixture(0)]
+class FooFixture implements FixtureInterface, FakerAware
+{
+    // your code
+}
+```
+In this example the FooFixture is loaded at position 0 which means at the beginning of all fixtures.
 ### Faker
 As you can see it is possible to use PHPFaker inside a fixture class.
 
 If you implement the `FakerAware` interface a Faker instance is automatically injected into the data fixture.
 
-## Limitations
-* A fixture class can only be used once for a test, regardless of whether the DataFixture is defined on a class basis or a method basis
-    * This is invalid and will only execute on fixture, mostly the latest defined one
-```php
-    #[DataFixture(new BarFixture('first'))]
-    #[DataFixture(BarFixture::class)]
-    public function testFoo(): void
-    {
-    // code
-    }
+### Examples
+
+You can see some examples in the directory `examples` or you can run the script
+```shell
+php examples/Examples.php
 ```

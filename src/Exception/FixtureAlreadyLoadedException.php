@@ -10,7 +10,7 @@ declare(strict_types=1);
 namespace Dknx01\DataFixtures\Exception;
 
 use Dknx01\DataFixtures\Attributes\DataFixture;
-use Dknx01\DataFixtures\Fixture\FixtureInterface;
+use Dknx01\DataFixtures\Contract\FixtureInterface;
 use Exception;
 
 use function sprintf;

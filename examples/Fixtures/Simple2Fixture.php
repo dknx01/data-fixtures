@@ -7,14 +7,17 @@ declare(strict_types=1);
  * (c) dknx01/data-fixtures
  */
 
-namespace Dknx01\DataFixtures\Tests\Helper;
+namespace examples\Fixtures;
 
 use Dknx01\DataFixtures\Contract\FixtureInterface;
 use PDO;
 
-class SimpleFixture implements FixtureInterface
+use const PHP_EOL;
+
+class Simple2Fixture implements FixtureInterface
 {
     public function load(PDO $pdo): void
     {
+        echo 'A second simple fixture loading class.'.PHP_EOL.'File: '.__FILE__.PHP_EOL;
     }
 }

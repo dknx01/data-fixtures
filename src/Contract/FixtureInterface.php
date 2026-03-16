@@ -7,7 +7,7 @@ declare(strict_types=1);
  * (c) dknx01/data-fixtures
  */
 
-namespace Dknx01\DataFixtures\Fixture;
+namespace Dknx01\DataFixtures\Contract;
 
 use PDO;
 

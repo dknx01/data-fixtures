@@ -7,7 +7,7 @@ parameters:
 			path: src/Exception/UnsupportedPDODriverException.php
 
 		-
-			message: '#^Parameter \#1 \$pdo of method Dknx01\\DataFixtures\\Fixture\\FixtureInterface\:\:load\(\) expects PDO, PDO\|null given\.$#'
+			message: '#^Parameter \#1 \$pdo of method Dknx01\\DataFixtures\\Contract\\FixtureInterface\:\:load\(\) expects PDO, PDO\|null given\.$#'
 			identifier: argument.type
 			count: 1
 			path: src/Fixture/FixtureHandler.php
@@ -61,31 +61,25 @@ parameters:
 			path: tests/Application/Purger/DatabasePurgerTest.php
 
 		-
-			message: '#^Argument of an invalid type Dknx01\\DataFixtures\\Fixture\\FixtureCollection\<\(int\|string\), Dknx01\\DataFixtures\\Fixture\\FixtureInterface\>\|null supplied for foreach, only iterables are supported\.$#'
-			identifier: foreach.nonIterable
-			count: 1
-			path: tests/Helper/FixtureTestCaseDummy.php
-
-		-
-			message: '#^Cannot call method add\(\) on Dknx01\\DataFixtures\\Fixture\\FixtureCollection\<\(int\|string\), Dknx01\\DataFixtures\\Fixture\\FixtureInterface\>\|null\.$#'
+			message: '#^Cannot call method add\(\) on Dknx01\\DataFixtures\\Fixture\\FixtureCollection\<\(int\|string\), Dknx01\\DataFixtures\\Contract\\FixtureInterface\>\|null\.$#'
 			identifier: method.nonObject
 			count: 1
 			path: tests/Helper/FixtureTestCaseDummy.php
 
 		-
-			message: '#^Cannot call method addAt\(\) on Dknx01\\DataFixtures\\Fixture\\FixtureCollection\<\(int\|string\), Dknx01\\DataFixtures\\Fixture\\FixtureInterface\>\|null\.$#'
+			message: '#^Cannot call method addAt\(\) on Dknx01\\DataFixtures\\Fixture\\FixtureCollection\<\(int\|string\), Dknx01\\DataFixtures\\Contract\\FixtureInterface\>\|null\.$#'
 			identifier: method.nonObject
 			count: 1
 			path: tests/Helper/FixtureTestCaseDummy.php
 
 		-
-			message: '#^Cannot call method has\(\) on Dknx01\\DataFixtures\\Fixture\\FixtureCollection\<\(int\|string\), Dknx01\\DataFixtures\\Fixture\\FixtureInterface\>\|null\.$#'
+			message: '#^Cannot call method has\(\) on Dknx01\\DataFixtures\\Fixture\\FixtureCollection\<\(int\|string\), Dknx01\\DataFixtures\\Contract\\FixtureInterface\>\|null\.$#'
 			identifier: method.nonObject
 			count: 1
 			path: tests/Helper/FixtureTestCaseDummy.php
 
 		-
-			message: '#^Method Dknx01\\DataFixtures\\Tests\\Helper\\FixtureTestCaseDummy\:\:getFixture\(\) should return Dknx01\\DataFixtures\\Fixture\\FixtureInterface but returns object\.$#'
+			message: '#^Method Dknx01\\DataFixtures\\Tests\\Helper\\FixtureTestCaseDummy\:\:getFixture\(\) should return Dknx01\\DataFixtures\\Contract\\FixtureInterface but returns object\.$#'
 			identifier: return.type
 			count: 1
 			path: tests/Helper/FixtureTestCaseDummy.php
@@ -97,7 +91,7 @@ parameters:
 			path: tests/Helper/FixtureTestCaseDummy.php
 
 		-
-			message: '#^Method Dknx01\\DataFixtures\\Tests\\Helper\\FixtureTestCaseDummy\:\:getFixtures\(\) should return Dknx01\\DataFixtures\\Fixture\\FixtureCollection but returns Dknx01\\DataFixtures\\Fixture\\FixtureCollection\<\(int\|string\), Dknx01\\DataFixtures\\Fixture\\FixtureInterface\>\|null\.$#'
+			message: '#^Method Dknx01\\DataFixtures\\Tests\\Helper\\FixtureTestCaseDummy\:\:getFixtures\(\) should return Dknx01\\DataFixtures\\Fixture\\FixtureCollection but returns Dknx01\\DataFixtures\\Fixture\\FixtureCollection\<\(int\|string\), Dknx01\\DataFixtures\\Contract\\FixtureInterface\>\|null\.$#'
 			identifier: return.type
 			count: 1
 			path: tests/Helper/FixtureTestCaseDummy.php
@@ -106,6 +100,12 @@ parameters:
 			message: '#^Offset ''class'' might not exist on array\{function\: string, line\?\: int, file\?\: string, class\?\: class\-string, type\?\: ''\-\>''\|''\:\:'', args\?\: list\<mixed\>, object\?\: object\}\.$#'
 			identifier: offsetAccess.notFound
 			count: 2
+			path: tests/Helper/FixtureTestCaseDummy.php
+
+		-
+			message: '#^Parameter \#1 \$dataFixture of class Dknx01\\DataFixtures\\Exception\\FixtureAlreadyLoadedException constructor expects Dknx01\\DataFixtures\\Attributes\\DataFixture, Dknx01\\DataFixtures\\Attributes\\DataFixture\|Dknx01\\DataFixtures\\Attributes\\DependFixture given\.$#'
+			identifier: argument.type
+			count: 1
 			path: tests/Helper/FixtureTestCaseDummy.php
 
 		-
@@ -121,31 +121,25 @@ parameters:
 			path: tests/Helper/TestDriver.php
 
 		-
-			message: '#^Argument of an invalid type Dknx01\\DataFixtures\\Fixture\\FixtureCollection\<\(int\|string\), Dknx01\\DataFixtures\\Fixture\\FixtureInterface\>\|null supplied for foreach, only iterables are supported\.$#'
-			identifier: foreach.nonIterable
-			count: 1
-			path: tests/Unit/Fixture/FixtureHandlerTest.php
-
-		-
-			message: '#^Cannot call method add\(\) on Dknx01\\DataFixtures\\Fixture\\FixtureCollection\<\(int\|string\), Dknx01\\DataFixtures\\Fixture\\FixtureInterface\>\|null\.$#'
+			message: '#^Cannot call method add\(\) on Dknx01\\DataFixtures\\Fixture\\FixtureCollection\<\(int\|string\), Dknx01\\DataFixtures\\Contract\\FixtureInterface\>\|null\.$#'
 			identifier: method.nonObject
 			count: 1
 			path: tests/Unit/Fixture/FixtureHandlerTest.php
 
 		-
-			message: '#^Cannot call method addAt\(\) on Dknx01\\DataFixtures\\Fixture\\FixtureCollection\<\(int\|string\), Dknx01\\DataFixtures\\Fixture\\FixtureInterface\>\|null\.$#'
+			message: '#^Cannot call method addAt\(\) on Dknx01\\DataFixtures\\Fixture\\FixtureCollection\<\(int\|string\), Dknx01\\DataFixtures\\Contract\\FixtureInterface\>\|null\.$#'
 			identifier: method.nonObject
 			count: 1
 			path: tests/Unit/Fixture/FixtureHandlerTest.php
 
 		-
-			message: '#^Cannot call method has\(\) on Dknx01\\DataFixtures\\Fixture\\FixtureCollection\<\(int\|string\), Dknx01\\DataFixtures\\Fixture\\FixtureInterface\>\|null\.$#'
+			message: '#^Cannot call method has\(\) on Dknx01\\DataFixtures\\Fixture\\FixtureCollection\<\(int\|string\), Dknx01\\DataFixtures\\Contract\\FixtureInterface\>\|null\.$#'
 			identifier: method.nonObject
 			count: 1
 			path: tests/Unit/Fixture/FixtureHandlerTest.php
 
 		-
-			message: '#^Method Dknx01\\DataFixtures\\Tests\\Unit\\Fixture\\FixtureHandlerTest\:\:getFixture\(\) should return Dknx01\\DataFixtures\\Fixture\\FixtureInterface but returns object\.$#'
+			message: '#^Method Dknx01\\DataFixtures\\Tests\\Unit\\Fixture\\FixtureHandlerTest\:\:getFixture\(\) should return Dknx01\\DataFixtures\\Contract\\FixtureInterface but returns object\.$#'
 			identifier: return.type
 			count: 1
 			path: tests/Unit/Fixture/FixtureHandlerTest.php
@@ -157,7 +151,13 @@ parameters:
 			path: tests/Unit/Fixture/FixtureHandlerTest.php
 
 		-
-			message: '#^Parameter \#1 \$fixtures of method Dknx01\\DataFixtures\\Fixture\\FixtureHandler\:\:handle\(\) expects Dknx01\\DataFixtures\\Fixture\\FixtureCollection\<\(int\|string\), Dknx01\\DataFixtures\\Fixture\\FixtureInterface\>, Dknx01\\DataFixtures\\Fixture\\FixtureCollection\<mixed, mixed\> given\.$#'
+			message: '#^Parameter \#1 \$dataFixture of class Dknx01\\DataFixtures\\Exception\\FixtureAlreadyLoadedException constructor expects Dknx01\\DataFixtures\\Attributes\\DataFixture, Dknx01\\DataFixtures\\Attributes\\DataFixture\|Dknx01\\DataFixtures\\Attributes\\DependFixture given\.$#'
+			identifier: argument.type
+			count: 1
+			path: tests/Unit/Fixture/FixtureHandlerTest.php
+
+		-
+			message: '#^Parameter \#1 \$fixtures of method Dknx01\\DataFixtures\\Fixture\\FixtureHandler\:\:handle\(\) expects Dknx01\\DataFixtures\\Fixture\\FixtureCollection\<\(int\|string\), Dknx01\\DataFixtures\\Contract\\FixtureInterface\>, Dknx01\\DataFixtures\\Fixture\\FixtureCollection\<mixed, mixed\> given\.$#'
 			identifier: argument.type
 			count: 1
 			path: tests/Unit/Fixture/FixtureHandlerTest.php

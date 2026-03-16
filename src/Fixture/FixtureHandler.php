@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 namespace Dknx01\DataFixtures\Fixture;
 
+use Dknx01\DataFixtures\Contract\FixtureInterface;
 use Dknx01\DataFixtures\Purger\Configuration;
 use Dknx01\DataFixtures\Purger\DatabasePurger;
 use Throwable;

@@ -10,7 +10,7 @@ declare(strict_types=1);
 namespace Dknx01\DataFixtures\Attributes;
 
 use Attribute;
-use Dknx01\DataFixtures\Fixture\FixtureInterface;
+use Dknx01\DataFixtures\Contract\FixtureInterface;
 
 #[Attribute(Attribute::IS_REPEATABLE | Attribute::TARGET_CLASS | Attribute::TARGET_METHOD)]
 readonly class DataFixture
